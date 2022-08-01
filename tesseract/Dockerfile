@@ -5,5 +5,5 @@ ENV LANG=C.UTF-8 \
     TESSDATA_PREFIX=/usr/share/tessdata/
 RUN echo -e "http://mirrors.aliyun.com/alpine/v3.16/main/\nhttp://mirrors.aliyun.com/alpine/v3.16/community/" > /etc/apk/repositories \
     && apk update \
-    && apk add --no-cache openjdk8 tesseract-ocr \
+    && apk add --no-cache curl openjdk8 tesseract-ocr \
     && wget -P $TESSDATA_PREFIX https://raw.githubusercontent.com/tesseract-ocr/tessdata/main/chi_sim.traineddata
