@@ -10,4 +10,4 @@ RUN echo -e "http://mirrors.aliyun.com/alpine/v3.16/main/\nhttp://mirrors.aliyun
     # 新建data目录
     && mkdir data
 # 添加字体：微软雅黑
-COPY ttf/* usr/share/fonts/
+COPY font/* usr/share/fonts/
