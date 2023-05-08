@@ -1,4 +1,4 @@
-FROM alpine:3.16.4
+FROM alpine:3.16.5
 ENV LANG=C.UTF-8 \
     JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk \
     PATH=$PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin
@@ -8,7 +8,8 @@ RUN echo -e "http://mirrors.aliyun.com/alpine/v3.16/main/\nhttp://mirrors.aliyun
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     # 新建data目录
-    && mkdir data tongweb
+    && mkdir data tongweb arthas \
+    && curl -O --output-dir /arthas https://arthas.aliyun.com/arthas-boot.jar
 # 添加字体：微软雅黑
 COPY font/* /usr/share/fonts/
 # 添加东方通许可证
