@@ -6,10 +6,13 @@ ENV LANG=C.UTF-8
 # 安装minIO、helm
 COPY package/* /usr/local/bin/
 RUN echo -e "http://mirrors.aliyun.com/alpine/v3.16/main/\nhttp://mirrors.aliyun.com/alpine/v3.16/community/" > /etc/apk/repositories \
-    && apk --update add --no-cache curl bash tzdata zip git npm \
+    && apk --update add --no-cache curl bash tzdata zip git npm maven \
     # 修改时区
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && npm install --registry https://registry.npm.taobao.org -g pnpm \
-    && helm init -c --stable-repo-url=https://mirror.azure.cn/kubernetes/charts/
-
+    && helm init -c --stable-repo-url=https://mirror.azure.cn/kubernetes/charts/ \
+    # 注释maven-default-http-blocker，159行到165行
+    && sed -i '159i\<!--' /usr/share/java/maven-3/conf/settings.xml \
+    && sed -i '166a\-->' /usr/share/java/maven-3/conf/settings.xml
+COPY maven/settings.xml /root/.m2/
