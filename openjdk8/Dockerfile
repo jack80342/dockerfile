@@ -14,7 +14,5 @@ RUN echo -e "http://mirrors.aliyun.com/alpine/v3.16/main/\nhttp://mirrors.aliyun
     && curl -O --output-dir /arthas https://arthas.aliyun.com/arthas-boot.jar
 # 添加字体：微软雅黑
 COPY font/* /usr/share/fonts/
-# 添加东方通许可证
-COPY tongweb/* /tongweb/
 # 添加简体中文模型
 COPY tesseract/* /usr/share/tessdata/
