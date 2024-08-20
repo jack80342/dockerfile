@@ -1,7 +1,7 @@
 FROM alpine:3.20.2
 ENV LANG=C.UTF-8 \
     JAVA_HOME=/usr/lib/jvm/java-17-openjdk \
-    PATH=$PATH:/usr/lib/jvm/java-17-openjdk/bin \
+    PATH=$PATH:/usr/lib/jvm/java-17-openjdk/jre/bin \
     TESSDATA_PREFIX=/usr/share/tessdata/
 RUN echo -e "http://mirrors.aliyun.com/alpine/v3.20/main/\nhttp://mirrors.aliyun.com/alpine/v3.20/community/" > /etc/apk/repositories \
     && apk --update add --no-cache openjdk17 tesseract-ocr curl busybox-extras bash gcompat tzdata tini \
